@@ -1,0 +1,23 @@
+import React from "react";
+import { Marker } from "@react-google-maps/api";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { setSelectedMarker } from "@/redux/slice/fetcherSlice";
+
+const MarkerWrapper = () => {
+  const dispatch = useAppDispatch();
+  const { places } = useAppSelector((store) => store.fetcher);
+  return places.map((place, index) => (
+    <Marker
+      position={{
+        lat: place?.point?.lat! ?? 0,
+        lng: place?.point?.lon ?? 0,
+      }}
+      onClick={(e) => {
+        dispatch(setSelectedMarker(place));
+      }}
+      key={index}
+    ></Marker>
+  ));
+};
+
+export default MarkerWrapper;
