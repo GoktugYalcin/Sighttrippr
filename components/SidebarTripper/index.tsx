@@ -22,7 +22,7 @@ const SidebarTripper = () => {
         className="flex w-full p-4 bg-white justify-between items-center gap-12 rounded-2xl"
       >
         <div className="flex justify-start items-center gap-[20px]">
-          <h1 className="text-2xl bg-gradient-to-tr from-green-400 via-cyan-900 to-blue-500 bg-clip-text text-transparent">
+          <h1 className="text-2xl bg-gradient-to-tr from-green-400 via-cyan-900 to-blue-500 bg-clip-text text-transparent select-auto">
             📍Sighttrippr
           </h1>
           <span className="bg-gray-800 px-1 py-1 rounded-full text-slate-200 text-xl cursor-pointer">
