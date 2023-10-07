@@ -8,10 +8,7 @@ const MarkerWrapper = () => {
   const { places } = useAppSelector((store) => store.fetcher);
   return places.map((place, index) => (
     <Marker
-      position={{
-        lat: place?.point?.lat! ?? 0,
-        lng: place?.point?.lon ?? 0,
-      }}
+      position={place?.geometry.location}
       onClick={(e) => {
         dispatch(setSelectedMarker(place));
       }}

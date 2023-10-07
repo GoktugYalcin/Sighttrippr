@@ -20,6 +20,7 @@ const SelectWrapper: React.FC<SelectWrapperProps> = ({
 
   return (
     <div className="flex-col flex justify-center items-start w-full gap-2">
+      {label && <span>{label}</span>}
       <AsyncSelect
         value={value}
         placeholder={`Choose a ${fetchType}...`}
@@ -28,6 +29,7 @@ const SelectWrapper: React.FC<SelectWrapperProps> = ({
         getOptionLabel={(item) => getOptionLabel(item) ?? "Choose..."}
         getOptionValue={(item) => getOptionValue(item)}
         isMulti={fetchType !== "city"}
+        cacheOptions={true}
         loadOptions={(e, callback) => {
           loadOptions(e, callback);
         }}
@@ -42,8 +44,6 @@ const SelectWrapper: React.FC<SelectWrapperProps> = ({
             dispatch(setPlaces(selected));
           }
         }}
-        backspaceRemovesValue={false}
-        isClearable={false}
         styles={{
           multiValueRemove: () => ({
             display: "none",

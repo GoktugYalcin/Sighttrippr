@@ -1,4 +1,8 @@
-import { routeObjectGeneratorProps, TripmapProps } from "@/utils/interfaces";
+import {
+  PlaceProps,
+  routeObjectGeneratorProps,
+  TripmapProps,
+} from "@/utils/interfaces";
 
 export const mapStyles: google.maps.MapTypeStyle[] | null = [
   { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
@@ -85,17 +89,17 @@ export const mapStyles: google.maps.MapTypeStyle[] | null = [
 ];
 
 export const createRouteObject = (
-  prevPlace: TripmapProps,
-  place: TripmapProps,
+  prevPlace: PlaceProps,
+  place: PlaceProps,
 ): routeObjectGeneratorProps => {
   return {
     origin: {
-      lat: prevPlace.point!.lat || 0,
-      lng: prevPlace.point!.lon || 0,
+      lat: prevPlace.geometry.location?.lat || 0,
+      lng: prevPlace.geometry.location?.lng || 0,
     },
     destination: {
-      lat: place.point!.lat || 0,
-      lng: place.point!.lon || 0,
+      lat: place.geometry.location?.lat || 0,
+      lng: place.geometry.location?.lng || 0,
     },
     travelMode: google.maps.TravelMode.DRIVING,
   };

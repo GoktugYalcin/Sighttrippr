@@ -1,5 +1,10 @@
 import LatLng = google.maps.LatLng;
-import { GoogleTypeCoord } from "@/utils/interfaces";
+import {
+  FetcherStateProps,
+  GoogleTypeCoord,
+  RewrittenDirectionResult,
+} from "@/utils/interfaces";
+import LatLngLiteral = google.maps.LatLngLiteral;
 
 export const getCountryFlagEmoji = (countryCode: string): string => {
   try {
@@ -27,4 +32,23 @@ export const plotColors = [
 export const defaultCenter: GoogleTypeCoord = {
   lat: 41.015137,
   lng: 28.97953,
+};
+
+export const generateGoogleMapsURL = (
+  route: RewrittenDirectionResult,
+): string => {
+  const request = route?.request;
+  if (!request) return "";
+
+  const { origin, destination } = request;
+  const encodedOrigin = encodeURIComponent(
+    `${origin.location.lat()},${origin.location.lng()}`,
+  );
+  const encodedDestination = encodeURIComponent(
+    `${destination.location.lat()},${destination.location.lng()}`,
+  );
+  console.log(
+    `https://www.google.com/maps/dir/?api=1&origin=${encodedOrigin}&destination=${encodedDestination}`,
+  );
+  return `https://www.google.com/maps/dir/?api=1&origin=${encodedOrigin}&destination=${encodedDestination}`;
 };

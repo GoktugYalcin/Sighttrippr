@@ -2,11 +2,14 @@
 
 import { createSlice, current } from "@reduxjs/toolkit";
 import { FetcherStateProps } from "@/utils/interfaces";
+import { act } from "react-dom/test-utils";
 
 const initialState: FetcherStateProps = {
-  city: null,
+  city: undefined,
   places: [],
-  selectedMarker: null,
+  selectedMarker: undefined,
+  fetchedRoutes: [],
+  selectedRoute: undefined,
 };
 
 export const fetcherSlice = createSlice({
@@ -25,9 +28,21 @@ export const fetcherSlice = createSlice({
     setSelectedMarker: (state, action) => {
       state.selectedMarker = action.payload;
     },
+    setFetchedRoutes: (state, action) => {
+      state.fetchedRoutes = action.payload;
+    },
+    setSelectedRoute: (state, action) => {
+      state.selectedRoute = action.payload;
+    },
   },
 });
 
-export const { setCity, setPlaces, setSelectedMarker } = fetcherSlice.actions;
+export const {
+  setCity,
+  setPlaces,
+  setSelectedMarker,
+  setFetchedRoutes,
+  setSelectedRoute,
+} = fetcherSlice.actions;
 
 export default fetcherSlice.reducer;

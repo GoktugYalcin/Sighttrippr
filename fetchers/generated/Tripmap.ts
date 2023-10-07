@@ -20,19 +20,4 @@ export class Tripmap extends FetcherClass {
       },
     });
   }
-
-  fetchQuery = async (callback: (options: TripmapProps[]) => void) => {
-    try {
-      const queryParameters = this.getQueryOptions();
-      const res = await fetch(
-        `/getParameters/place?lat=${queryParameters.lat}&lon=${queryParameters.lon}&q=${queryParameters.name}`,
-        {
-          method: "POST",
-        },
-      );
-      res.json().then((result) => callback(result));
-    } catch {
-      return callback([]);
-    }
-  };
 }
