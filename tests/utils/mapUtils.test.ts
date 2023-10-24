@@ -1,18 +1,18 @@
-import { createRouteObject, mapStyles } from '@/utils/mapUtils';
+import { createRouteObject, mapStyles } from "@/utils/mapUtils";
 
-describe('mapUtils', () => {
-  describe('mapStyles', () => {
-    it('should be defined', () => {
+describe("mapUtils", () => {
+  describe("mapStyles", () => {
+    it("should be defined", () => {
       expect(mapStyles).toBeDefined();
     });
 
-    it('should be an array', () => {
+    it("should be an array", () => {
       expect(Array.isArray(mapStyles)).toBe(true);
     });
   });
 
-  describe('createRouteObject', () => {
-    it('should return the correct object given valid inputs', () => {
+  describe("createRouteObject", () => {
+    it("should return the correct object given valid inputs", () => {
       const prevPlace = {
         geometry: {
           location: {
@@ -42,11 +42,11 @@ describe('mapUtils', () => {
           lat: 3,
           lng: 4,
         },
-        travelMode: 'DRIVING',
+        travelMode: "DRIVING",
       });
     });
 
-    it('should handle edge cases', () => {
+    it("should handle edge cases", () => {
       const prevPlace = {
         geometry: {
           location: {},
@@ -70,7 +70,7 @@ describe('mapUtils', () => {
           lat: 0,
           lng: 0,
         },
-        travelMode: 'DRIVING',
+        travelMode: "DRIVING",
       });
     });
   });
