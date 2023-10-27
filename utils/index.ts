@@ -47,8 +47,6 @@ export const generateGoogleMapsURL = (
   const encodedDestination = encodeURIComponent(
     `${destination.location.lat()},${destination.location.lng()}`,
   );
-  console.log(
-    `https://www.google.com/maps/dir/?api=1&origin=${encodedOrigin}&destination=${encodedDestination}`,
-  );
+  // console.log removed
   return `https://www.google.com/maps/dir/?api=1&origin=${encodedOrigin}&destination=${encodedDestination}`;
 };
