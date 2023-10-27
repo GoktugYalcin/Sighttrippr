@@ -19,7 +19,6 @@ const RouteList = () => {
         } else {
           const prevPlace = places[index - 1];
           const decidedRoute = fetchedRoutes[index - 1];
-          console.log(decidedRoute);
           const routeLeg = decidedRoute?.routes[0].legs[0];
 
           return (
